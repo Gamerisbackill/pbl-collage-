@@ -18,7 +18,7 @@ Dataset: **AI4I 2020 Predictive Maintenance Dataset** (UCI Machine Learning Repo
 | File | Purpose |
 |---|---|
 | `smartmach.py` | The complete project code (one script, divided into numbered sections) |
-| `README.md` | This file |
+| `README.md` | This file  for understanding what in our report|
 | `ai4i2020.csv` | Dataset – downloaded automatically on first run  |
 | `smartmach_outputs/` | Created on run: 7 plots (`.png`), `model_comparison.csv`, `smartmach_best_model.joblib` |
 
