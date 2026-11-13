@@ -19,7 +19,7 @@ Dataset: **AI4I 2020 Predictive Maintenance Dataset** (UCI Machine Learning Repo
 |---|---|
 | `smartmach.py` | The complete project code (one script, divided into numbered sections) |
 | `README.md` | This file |
-| `ai4i2020.csv` | Dataset – downloaded automatically on first run (or place it next to the script yourself) |
+| `ai4i2020.csv` | Dataset – downloaded automatically on first run  |
 | `smartmach_outputs/` | Created on run: 7 plots (`.png`), `model_comparison.csv`, `smartmach_best_model.joblib` |
 
 ## 3. How to run
@@ -65,7 +65,7 @@ The script ends with an interactive prompt asking for machine values. Set `RUN_I
 
 ## 6. Assumptions (not specified in the synopsis)
 
-These were not stated in the document, so they are my assumptions – confirm them with your faculty or change them:
+
 
 | Assumption | Where to change |
 |---|---|
@@ -90,7 +90,7 @@ Healthy machine: No failure expected | Probability = 0.00% | Risk = Low Risk
 Heavily worn tool: FAILURE LIKELY | Probability = 99.50% | Risk = High Risk
 ```
 
-Exact numbers depend on the real dataset, so run the script and use your own results in the report.
+Exact numbers depend on the real dataset, so we have run the script and use data which we able to find results in the report.
 (The code was tested end to end on a simulated file with the same columns, because the real dataset could not be
 downloaded in the development environment. The scores from that test are **not** real results.)
 
