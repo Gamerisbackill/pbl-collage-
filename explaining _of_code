@@ -1,0 +1,153 @@
+1. What your project does 
+
+Project title: SmartMach – Machine Learning Based Predictive Maintenance
+
+The main purpose is to predict whether an industrial machine is likely to fail using its sensor readings.
+
+For example:
+- Air temperature
+- Process temperature
+- Rotational speed
+- Torque
+- Tool wear
+The system predicts:
+1. Whether machine failure is expected.
+2. Probability of machine failure.
+3. Risk level: Low, Medium, or High.
+2. Simplified code explanation
+I have divided the code into 10 sections. Understand these sections because your teacher may ask you to explain them.
+Section	What it does
+1. Import libraries	Imports required Python libraries
+2. Load dataset	Downloads and reads machine data
+3. Preprocessing	Cleans the dataset
+4. Feature engineering	Creates two additional features
+5. EDA	Displays graphs and analyzes data
+6. Input/output	Separates features and target
+7. Model training	Trains five ML algorithms
+8. Model evaluation	Compares model performance
+9. Prediction	Predicts machine failure and risk
+10. Sample testing	Tests the system with sample values
+
+3. Understand the important machine learning concepts
+These are the concepts you should be able to explain to your teacher.
+
+A. Dataset
+
+We use the AI4I 2020 Predictive Maintenance Dataset from UCI.
+
+It contains industrial machine operating information and failure records.
+
+B. Data preprocessing
+
+We clean the data by:
+- Removing missing values.
+- Removing duplicate records.
+- Removing unnecessary columns.
+- Converting machine types into numerical values.
+For example:
+Original	Converted
+L	0
+M	1
+H	2
+
+C. Feature engineering
+
+We create two new features.
+
+1. Temperature Difference:
+\[
+TempDiff=ProcessTemp-AirTemp
+\]
+
+2. Mechanical Power:
+\[
+Power=\frac{Torque\times Speed\times2\pi}{60}
+\]
+
+These provide additional information to the machine learning models.
+
+D. Five ML algorithms
+
+Your project compares five algorithms:
+Algorithm	Simple explanation
+Logistic Regression	Predicts failure using a mathematical classification method
+Decision Tree	Makes predictions using decision rules
+Random Forest	Combines multiple decision trees
+SVM	Finds a boundary between different classes
+KNN	Predicts using nearby data points
+
+E. Training and testing
+
+We divide the dataset into:
+- 80% training data.
+- 20% testing data.
+Training data teaches the model.
+
+Testing data checks how well the model performs on unseen records.
+
+F. Model evaluation
+
+We use four evaluation metrics:
+Metric	Meaning
+Accuracy	Overall correct predictions
+Precision	How many predicted failures were actually failures
+Recall	How many actual failures were detected
+F1-score	Balance between precision and recall
+
+We select the best model using the F1-score because machine failure records are less common than normal machine records.
+4. How to explain the complete project to your teacher
+You can use this explanation during your PBL presentation.
+Project explanation (simple English)
+
+"Our project is SmartMach, which is a machine learning-based predictive maintenance system.
+
+The main objective of this project is to predict machine failures before they happen.
+
+First, we collect industrial machine sensor data from the AI4I 2020 dataset.
+
+Then, we perform data preprocessing to remove missing values, duplicate records and unnecessary columns.
+
+After preprocessing, we perform feature engineering to create additional features like temperature difference and mechanical power.
+
+Next, we train five machine learning algorithms: Logistic Regression, Decision Tree, Random Forest, SVM and KNN.
+
+We compare these models using accuracy, precision, recall and F1-score.
+
+After comparing all models, we select the best-performing model based on F1-score.
+
+Finally, the system accepts new machine sensor readings and predicts whether machine failure is expected. It also provides a Low, Medium or High risk level.
+
+This system can help industries identify possible machine failures and plan maintenance."
+
+5. Questions your teacher may ask in viva
+Question	Answer
+What is predictive maintenance?	Predicting machine failures before they happen.
+Why did you use Python?	Python provides libraries for machine learning and data analysis.
+What is a dataset?	A collection of data used to train and test a model.
+What is Random Forest?	An algorithm that combines multiple decision trees.
+Why use five algorithms?	To compare their performance and select the best one.
+What is overfitting?	When a model performs well on training data but poorly on new data.
+What is feature engineering?	Creating new useful features from existing data.
+What is F1-score?	The harmonic mean of precision and recall.
+What is the target variable?	Machine_failure (0 or 1).
+What is the output?	Failure prediction, probability and risk level.
+
+6. Important changes from your original code
+I simplified the following:
+- Removed unnecessary advanced functions.
+- Simplified dataset loading.
+- Simplified graph generation.
+- Made model training easier to understand.
+- Simplified model comparison.
+- Made machine prediction easier to explain.
+- Removed advanced permutation importance and model-saving sections.
+One important point: Low, Medium and High risk thresholds (30% and 60%) are assumptions made for the project, not official industry standards. Explain this if your teacher asks.
+
+7. How I recommend you prepare
+Don't memorize the entire code. Understand these five things particularly well:
+1. How the dataset is loaded and cleaned.
+2. How features and target variables are selected.
+3. How the five algorithms are trained.
+4. How the best model is selected.
+5. How new sensor values produce a failure prediction.
+I can also help you prepare a line-by-line explanation of the simplified Python code, with what each line does and exactly what to say if your teacher asks you about it.
