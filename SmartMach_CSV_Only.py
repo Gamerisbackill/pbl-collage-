@@ -1,12 +1,11 @@
-# =========================================================
+
 # SmartMach - Machine Learning based Predictive Maintenance
 # Course: Machine Learning Lab (24M15CA114)
 # Dataset: AI4I 2020 Predictive Maintenance (ai4i2020.csv)
-# =========================================================
 
-# ---------------------------------------------------------
+
 # 1. IMPORT LIBRARIES
-# ---------------------------------------------------------
+
 import os
 import io
 import pandas as pd
@@ -27,9 +26,8 @@ from sklearn.metrics import classification_report, ConfusionMatrixDisplay
 # Set this to False if you do not want to type machine values at the end.
 RUN_INTERACTIVE = True
 
-# ---------------------------------------------------------
+
 # 2. LOAD DATASET (CSV FILE)
-# ---------------------------------------------------------
 # Option A (VS Code / Jupyter): keep ai4i2020.csv in the same folder as this file.
 # Option B (Google Colab): run this cell, a "Choose Files" button appears,
 #                          select ai4i2020.csv from your computer.
@@ -54,9 +52,9 @@ else:
 print("Dataset shape:", df.shape)
 print(df.head())
 
-# ---------------------------------------------------------
+
 # 3. DATA PREPROCESSING
-# ---------------------------------------------------------
+
 # Rename columns to make them easier to use.
 df.rename(columns={
     "Air temperature [K]": "Air_temp",
@@ -83,16 +81,16 @@ df.drop(columns=columns_to_remove, inplace=True, errors="ignore")
 # Convert machine type into numbers.
 df["Type"] = df["Type"].map({"L": 0, "M": 1, "H": 2})
 
-# ---------------------------------------------------------
+
 # 4. FEATURE ENGINEERING
-# ---------------------------------------------------------
+
 # Create two additional useful features.
 df["Temp_diff"] = df["Process_temp"] - df["Air_temp"]
 df["Power"] = df["Torque"] * df["Rot_speed"] * 2 * np.pi / 60
 
-# ---------------------------------------------------------
+
 # 5. EXPLORATORY DATA ANALYSIS (EDA)
-# ---------------------------------------------------------
+
 print("\nFailure count:")
 print(df["Machine_failure"].value_counts())
 
@@ -115,9 +113,9 @@ plt.yticks(range(len(corr.columns)), corr.columns)
 plt.tight_layout()
 plt.show()
 
-# ---------------------------------------------------------
+
 # 6. SELECT INPUTS AND OUTPUT
-# ---------------------------------------------------------
+
 features = [
     "Type", "Air_temp", "Process_temp", "Rot_speed",
     "Torque", "Tool_wear", "Temp_diff", "Power"
@@ -134,9 +132,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 print("\nTraining records:", len(X_train))
 print("Testing records:", len(X_test))
 
-# ---------------------------------------------------------
+
 # 7. CREATE AND TRAIN MACHINE LEARNING MODELS
-# ---------------------------------------------------------
+
 models = {
     "Logistic Regression": LogisticRegression(
         class_weight="balanced", max_iter=1000
@@ -162,9 +160,8 @@ for model_name, model in models.items():
     trained_models[model_name] = pipeline
     print(model_name, "training completed.")
 
-# ---------------------------------------------------------
+
 # 8. TEST AND COMPARE MODELS
-# ---------------------------------------------------------
 results = []
 
 for model_name, model in trained_models.items():
@@ -214,9 +211,9 @@ best_model = trained_models[best_model_name]
 print("\nBest Model:", best_model_name)
 print(results_df.loc[best_model_name])
 
-# ---------------------------------------------------------
+
 # 9. IMPORTANT PARAMETERS INFLUENCING FAILURE
-# ---------------------------------------------------------
+
 # Random Forest can tell which inputs matter most for predicting failure.
 rf_model = trained_models["Random Forest"].steps[-1][1]
 importance = pd.Series(rf_model.feature_importances_, index=features).sort_values()
@@ -230,9 +227,9 @@ plt.xlabel("Importance")
 plt.tight_layout()
 plt.show()
 
-# ---------------------------------------------------------
+
 # 10. PREDICT FAILURE AND RISK LEVEL FOR A NEW MACHINE
-# ---------------------------------------------------------
+
 def predict_machine(machine_type, air_temp, process_temp,
                     rot_speed, torque, tool_wear):
 
@@ -289,9 +286,8 @@ def predict_machine(machine_type, air_temp, process_temp,
     print("Risk level:", risk)
 
 
-# ---------------------------------------------------------
+
 # 11. TRY A SAMPLE MACHINE
-# ---------------------------------------------------------
 predict_machine(
     machine_type="M",
     air_temp=298.1,
@@ -301,9 +297,9 @@ predict_machine(
     tool_wear=100
 )
 
-# ---------------------------------------------------------
+
 # 12. INTERACTIVE PREDICTION (USER TYPES MACHINE VALUES)
-# ---------------------------------------------------------
+
 if RUN_INTERACTIVE:
     print("\n===== INTERACTIVE PREDICTION =====")
     while True:
